@@ -38,6 +38,7 @@ $ node server
 ## Todo List
 - [ ] Self Destruct individual tokens when expired.
 - [ ] Database Integration w/ MongoDB & SQLite
+- [ ] RESTful API endpoint that returns a JSON Array of usable tokens.
 
 ### Who
 
