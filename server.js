@@ -6,40 +6,46 @@ const app = express();
 const parse = require('url-parse');
 const colors = require('colors');
 const config = require('./config');
+const moment = require('moment');
 
-var TWO_MINS = 60 * 2 * 1000 - 10000; /* LOL @ Anybody that actually contribute this is 1min and 50 seconds too risky to make it 2 mins */
+var TWO_MINS = 110 * 1000;/* LOL @ Anybody that actually contribute this is 1min and 50 seconds too risky to make it 2 mins */
+
+const lessThanTwoMinsAgo = (date) => {
+    return moment(date).isBefore(moment().subtract(TWO_MINS, 'ms'));
+}
+
 var tokens = []
 var harvestedToken = 0
 var sitekey;
 
 var log = function(type, text) {
 
-    var date = new Date()
-    var formatted = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
+  var date = new Date()
+  var formatted = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1")
 
-    switch (type) {
-        case "warning":
-            console.log(`[${formatted}] ${text}`.yellow)
-            break;
-        case "error":
-            console.log(`[${formatted}] ${text}`.red)
-            break;
-        case "info":
-            console.log(`[${formatted}] ${text}`.cyan)
-            break;
-        case "success":
-            console.log(`[${formatted}] ${text}`.green)
-            break;
+  switch (type) {
+    case "warning":
+      console.log(`[${formatted}] ${text}`.yellow)
+      break;
+    case "error":
+      console.log(`[${formatted}] ${text}`.red)
+      break;
+    case "info":
+      console.log(`[${formatted}] ${text}`.cyan)
+      break;
+    case "success":
+      console.log(`[${formatted}] ${text}`.green)
+      break;
 
-        default:
-            console.log(`[${formatted}] ${text}`.white)
-    }
+    default:
+      console.log(`[${formatted}] ${text}`.white)
+  }
 }
 
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 
 log('info', `Using Sitekey Provided (${config.sitekey})`);
@@ -57,15 +63,24 @@ app.get('/usable_tokens', function(req, res) {
 });
 
 app.post('/submit', function(req, res) {
-  //console.log(req.body);
   harvestedToken += 1
   log('info', `Successful Token: ${req.body['g-recaptcha-response']}`);
   tokens.push({
     token: req.body['g-recaptcha-response'],
-    timestamp: new Date
+    timestamp: moment()
   })
   return res.redirect(`${config.host}:3000/harvest`);
 });
+
+var loop = setInterval(function() {
+  for (var i=0; i < tokens.length; i++) {
+    var tokenDate = Date.parse(tokens[i].timestamp);
+    if (lessThanTwoMinsAgo(tokens[i].timestamp)) {
+      log('error', `Token Expired (${tokens[i].token})`)
+      tokens.splice(i, 1);
+    }
+  }
+}, 0);
 
 app.listen(app.get('port'), () => {
   log('success', `Server Harvester started @ ${config.host}:3000/harvest`)
