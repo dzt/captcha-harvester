@@ -50,6 +50,13 @@ app.get('/harvest', function(req, res) {
   });
 });
 
+app.get('/usable_tokens', function(req, res) {
+  return res.json([{
+    token: 'TODO',
+    timestamp: 'TODO'
+  }]);
+});
+
 app.post('/submit', function(req, res) {
   //console.log(req.body);
   harvestedToken += 1
