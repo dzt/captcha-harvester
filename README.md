@@ -36,8 +36,8 @@ $ node server
 ```
 
 ## Todo List
-- [] Self Destruct individual tokens when expired.
-- [] Database Integration w/ MongoDB & SQLite
+- [ ] Self Destruct individual tokens when expired.
+- [ ] Database Integration w/ MongoDB & SQLite
 
 ### Who
 
