@@ -1,0 +1,19 @@
+{
+  "name": "captcha-harvester",
+  "version": "1.0.0",
+  "description": "Captcha Harvester for websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzt/captcha-harvester.git"
+  },
+  "author": "Peter Soboyejo <thepcmrtim@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dzt/captcha-harvester/issues"
+  },
+  "homepage": "https://github.com/dzt/captcha-harvester#readme"
+}
