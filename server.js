@@ -7,6 +7,8 @@ const parse = require('url-parse');
 const colors = require('colors');
 const config = require('./config');
 
+var TWO_MINS = 60 * 2 * 1000 - 10000; /* LOL @ Anybody that actually contribute this is 1min and 50 seconds too risky to make it 2 mins */
+var tokens = []
 var harvestedToken = 0
 var sitekey;
 
@@ -51,16 +53,17 @@ app.get('/harvest', function(req, res) {
 });
 
 app.get('/usable_tokens', function(req, res) {
-  return res.json([{
-    token: 'TODO',
-    timestamp: 'TODO'
-  }]);
+  return res.json(tokens);
 });
 
 app.post('/submit', function(req, res) {
   //console.log(req.body);
   harvestedToken += 1
   log('info', `Successful Token: ${req.body['g-recaptcha-response']}`);
+  tokens.push({
+    token: req.body['g-recaptcha-response'],
+    timestamp: new Date
+  })
   return res.redirect(`${config.host}:3000/harvest`);
 });
 
