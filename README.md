@@ -17,12 +17,12 @@ $ npm install
 
 Configure information inside the `config.example.json` be sure to rename it to `config.json` or simply run `mv config.example.json config.json` (macOS & Windows) when you're done. Be sure to provide a valid site-key.
 
-Host Configuration Setup for macOS users:
+Host Configuration Setup for Windows users:
 - Open up the `hosts` file under `C:\Windows\System32\Drivers\etc\hosts` in your desired text editor.
 - Modify the file by adding your desired host, for example `127.0.0.1 supremenewyork.com` or `127.0.0.1 dev.adidas.com`
 - Save the file
 
-Host Configuration Setup for Windows users:
+Host Configuration Setup for macOS users:
 - Edit the hosts file under `/private/etc/hosts` for example you can use Vim by typing in `sudo vim /private/etc/hosts` to edit.
 - Modify the file by adding your desired host, for example `127.0.0.1 supremenewyork.com` or `127.0.0.1 dev.adidas.com`
 - Save the file.
