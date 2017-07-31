@@ -62,6 +62,32 @@ app.get('/usable_tokens', function(req, res) {
   return res.json(tokens);
 });
 
+app.get('/get', function(req, res) {
+    return res.json(tokens.shift())
+})
+
+app.get('/settings', function(req, res) {
+    return res.render('settings', {
+        sitekey: config.sitekey,
+        url: parse(config.host).hostname
+    })
+})
+
+app.post('/settings/edit', function (req, res) {
+    if (req.body['sitekey'] && (req.body['sitekey'].length > 0)) {
+        log('info', `New Sitekey:${req.body['sitekey']}`)
+        config.sitekey = req.body['sitekey']
+    }
+    if (req.body['harvest_url'] && (req.body['harvest_url'].length > 0)) {
+        log('info', `New Harvest URL:${req.body['harvest_url']}`)
+        config.host = req.body['harvest_url']
+    }
+    return res.render('settings', {
+        sitekey: config.sitekey,
+        url: parse(config.host).hostname
+    })
+})
+
 app.post('/submit', function(req, res) {
   harvestedToken += 1
   log('info', `Successful Token: ${req.body['g-recaptcha-response']}`);
