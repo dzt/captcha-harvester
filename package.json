@@ -1,7 +1,7 @@
 {
   "name": "captcha-harvester",
   "version": "2.0.0",
-  "description": "",
+  "description": "Generate Captcha Tokens with ease.",
   "main": "index.js",
   "scripts": {
     "dev": "electron . --debug",
