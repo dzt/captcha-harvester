@@ -80,7 +80,7 @@ var spawnUpdate = function(args, callback) {
 
 process.on('uncaughtException', function (error) {
     console.log(error);
-}
+});
 
 switch (process.argv[1]) {
     case '--squirrel-install':
