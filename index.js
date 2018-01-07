@@ -230,7 +230,7 @@ function init() {
         const mainMenu = Menu.buildFromTemplate(menuTemplate)
         Menu.setApplicationMenu(mainMenu)
         win.setMenu(null);
-        win.webContents.openDevTools()
+        //win.webContents.openDevTools()
         win.loadURL(`file://${__dirname}/index.html`);
     })
 }

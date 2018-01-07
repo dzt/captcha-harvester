@@ -2,7 +2,7 @@
   "name": "captcha-harvester",
   "version": "1.0.0",
   "description": "",
-  "main": "test.js",
+  "main": "index.js",
   "scripts": {
     "dev": "electron . --debug",
     "dist:win": "build --windows --x64 --dir",
