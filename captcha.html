@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Captcha Harvester by dzt</title>
+    <style type="text/css">
+      body {
+        max-width: 450px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+  <center>
+  <form action="/submit" method="post" style="margin-top: 180px;">
+      <div class="g-recaptcha" data-sitekey="6LeoeSkTAAAAAA9rkZs5oS82l69OEYjKRZAiKdaF" data-callback="sub"></div>
+      <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+  </form>
+</center>
+
+<script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+ </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+  const remote = require('electron').remote
+  const app = remote.app
+  const ipcRenderer = require('electron').ipcRenderer
+
+  function sub(){
+    ipcRenderer.send('sendCaptcha', $('#g-recaptcha-response').val());
+    grecaptcha.reset();
+  }
+
+</script>
+  </body>
+</html>
