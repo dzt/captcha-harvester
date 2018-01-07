@@ -44,13 +44,13 @@
         "appId": "com.petersoboyejo.captchaharvester",
         "mac": {
             "target": "default",
-            "icon": "logo.icns",
+            "icon": "icon.icns",
             "identity": null
         },
         "win": {
             "publisherName": "CaptchaHarvester",
             "target": "squirrel",
-            "icon": "logo.ico"
+            "icon": "icon.ico"
         }
     }
 }
