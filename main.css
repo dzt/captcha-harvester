@@ -1,0 +1,65 @@
+body {
+  background-color: white;
+  font-family: BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+  text-align: center;
+  overflow: hidden;
+  outline: none;
+  font-size: 16px;
+  -webkit-user-select: none;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+h1 {
+  font-size: 0.9em;
+  -webkit-user-select: text;
+}
+
+p {
+  font-size: 0.8em;
+  -webkit-user-select: text;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Buttons */
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+
+/* Inputs */
+
+input[type="radio"] {
+  font-size: 0.8em;
+}
+
+input {
+  outline: none;
+}
+
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
