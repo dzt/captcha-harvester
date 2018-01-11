@@ -40,17 +40,17 @@
     "electron-builder": "^19.13.0"
   },
   "build": {
-        "productName": "CaptchaHarvester",
-        "appId": "com.petersoboyejo.captchaharvester",
-        "mac": {
-            "target": "default",
-            "icon": "icon.icns",
-            "identity": null
-        },
-        "win": {
-            "publisherName": "CaptchaHarvester",
-            "target": "squirrel",
-            "icon": "icon.ico"
-        }
+    "productName": "CaptchaHarvester",
+    "appId": "com.petersoboyejo.captchaharvester",
+    "mac": {
+      "target": "default",
+      "icon": "icon.icns",
+      "identity": null
+    },
+    "win": {
+      "publisherName": "CaptchaHarvester",
+      "target": "squirrel",
+      "icon": "icon.ico"
     }
+  }
 }
