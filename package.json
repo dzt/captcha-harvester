@@ -4,7 +4,7 @@
   "description": "Generate Captcha Tokens with ease.",
   "main": "index.js",
   "scripts": {
-    "dev": "electron . --debug",
+    "start": "electron . --debug",
     "dist:win": "build --windows --x64 --dir",
     "dist:mac": "build --mac",
     "installer": "node scripts/installer.js"
@@ -40,17 +40,17 @@
     "electron-builder": "^19.13.0"
   },
   "build": {
-        "productName": "CaptchaHarvester",
-        "appId": "com.petersoboyejo.captchaharvester",
-        "mac": {
-            "target": "default",
-            "icon": "icon.icns",
-            "identity": null
-        },
-        "win": {
-            "publisherName": "CaptchaHarvester",
-            "target": "squirrel",
-            "icon": "icon.ico"
-        }
+    "productName": "CaptchaHarvester",
+    "appId": "com.petersoboyejo.captchaharvester",
+    "mac": {
+      "target": "default",
+      "icon": "icon.icns",
+      "identity": null
+    },
+    "win": {
+      "publisherName": "CaptchaHarvester",
+      "target": "squirrel",
+      "icon": "icon.ico"
     }
+  }
 }
