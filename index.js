@@ -317,13 +317,19 @@ electron.ipcMain.on('logout', function(event) {
 function initBankServer() {
   bankExpressApp = express()
 
-  console.log(eSettings.getSync('server_port'));
-  bankExpressApp.set('port', parseInt(eSettings.getSync('server_port')));
+  let port = parseInt(eSettings.getSync('server_port'));
+
+  console.log('Bank server listening on port: ' + port);
+  bankExpressApp.set('port', port);
   bankExpressApp.use(bodyParser.json());
   bankExpressApp.use(bodyParser.urlencoded({ extended: true }));
 
   bankExpressApp.get('/', function(req, res) {
     return res.json(captchaBank);
+  });
+
+  bankExpressApp.get('/trigger', function(req, res) {
+    initCapWindow();
   });
 
   bankServer = bankExpressApp.listen(bankExpressApp.get('port'));
