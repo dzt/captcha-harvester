@@ -17,7 +17,7 @@ Development Setup:
 $ git clone https://github.com/dzt/captcha-harvester.git
 $ cd captcha-harvester
 $ npm install # sudo npm install if you're on macOS
-$ npm run dev
+$ npm start
 ```
 
 ### Who
