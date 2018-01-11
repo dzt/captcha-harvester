@@ -30,16 +30,24 @@
       <div class="tab-content">
         <!-- Captcha Solving -->
         <div id="menu1" class="tab-pane fade in active">
-          <br>
-          <h5>Sitekey</h5>
-          <input type="text" style="width: 400px;" class="form-control" id="sitekey">
-          <h5>Solve URL</h5>
-          <input type="text" style="width: 400px;" class="form-control" id="solveURL">
-          <h5>Captcha Window Port</h5>
-          <input type="number" style="width: 400px;" class="form-control" id="portNo">
-          <h5>Server Bank Port</h5>
-          <input type="number" style="width: 400px;" class="form-control" id="portNoServer">
-          <br>
+          <div class="harvester-inputs">
+            <div class="input-group">
+              <h5>Sitekey</h5>
+              <input type="text" style="width: 400px;" class="form-control" id="sitekey">
+            </div>
+            <div class="input-group">
+              <h5>Solve URL</h5>
+              <input type="text" style="width: 400px;" class="form-control" id="solveURL">
+            </div>
+            <div class="input-group">
+              <h5>Captcha Window Port</h5>
+              <input type="number" style="width: 400px;" class="form-control" id="portNo">
+            </div>
+            <div class="input-group">
+              <h5>Server Bank Port</h5>
+              <input type="number" style="width: 400px;" class="form-control" id="portNoServer">
+            </div>
+          </div>
           <!-- <div class="form-check" style="font-size: 14px;">
             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
             Enable IP Authorization
@@ -48,12 +56,11 @@
             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
             Disable User/Pass
           </div> -->
-          <br>
-          <button type="submit" class="btn btn-success" id="saveSettings" style="width: 400px; outline: none;">Save</button>
-          <br><br>
-          <button type="submit" class="btn btn-warning" id="openCapWindow" style="width: 400px; outline: none;">Open Captcha Window</button>
-          <br><br>
-          <button type="submit" class="btn btn-default" id="openEndpoint" style="width: 400px; outline: none;">Tokens Endpoint</button>
+          <div class="harvester-buttons">
+            <button type="submit" class="btn btn-success" id="saveSettings" style="width: 400px; outline: none;">Save</button>
+            <button type="submit" class="btn btn-warning" id="openCapWindow" style="width: 400px; outline: none;">Open Captcha Window</button>
+            <button type="submit" class="btn btn-default" id="openEndpoint" style="width: 400px; outline: none;">Tokens Endpoint</button>
+          </div>
         </div>
 
         <!-- Captcha History -->

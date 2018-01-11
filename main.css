@@ -49,6 +49,10 @@ a {
   display: block;
 }
 
+.harvester-buttons button {
+  margin-bottom: 1.2em;
+}
+
 /* Inputs */
 
 input[type="radio"] {
@@ -62,4 +66,8 @@ input {
 input[readonly] {
   background-color: white !important;
   cursor: text !important;
+}
+
+.harvester-inputs {
+  margin: 1.2em 0;
 }
