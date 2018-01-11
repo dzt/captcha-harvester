@@ -2,7 +2,8 @@ const electron = require('electron')
 const {
     app,
     BrowserWindow,
-    Menu
+    Menu,
+    session
 } = electron
 const settings = require('./settings-manager')
 const eSettings = require('electron-settings')
@@ -232,6 +233,7 @@ function init() {
         win.setMenu(null);
         //win.webContents.openDevTools()
         win.loadURL(`file://${__dirname}/index.html`);
+
     })
 }
 
@@ -290,6 +292,26 @@ electron.ipcMain.on('restartServer', (event, args) => {
     bankServer.close()
     bankExpressApp = null
     initBankServer();
+})
+
+electron.ipcMain.on('login', (event, args) => {
+
+  const window = new BrowserWindow({
+    width:550,
+    height:600,
+    minWidth: 550,
+    minHeight: 600
+  });
+
+
+  window.setMenu(null);
+  window.loadURL('https://accounts.google.com/signin/v2/identifier?hl=en&service=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Ffeature%3Dsign_in_button%26hl%3Den%26app%3Ddesktop%26next%3D%252F%26action_handle_signin%3Dtrue&passive=true&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin');
+
+})
+
+electron.ipcMain.on('logout', function(event) {
+    session.defaultSession.clearStorageData([]);
+    session.defaultSession.clearCache();
 })
 
 function initBankServer() {

@@ -49,6 +49,23 @@ $('#openEndpoint').click(() => {
     shell.openExternal(`http://127.0.0.1:${settingsValues.server_port}`);
 });
 
+$('#login').click(() => {
+    ipcRenderer.send('login');
+});
+
+$('#logout').click(() => {
+
+    ipcRenderer.send('logout');
+    $("#logout").prop("disabled", true);
+    $("#logout").text('Logging Out...');
+
+    setTimeout(function() {
+      $("#logout").text('Log Out');
+      $("#logout").prop("disabled", false);
+    }, 2000);
+
+});
+
 ipcRenderer.on('addHistory', function(event, data) {
   $('#history').append(`
     <li class="list-group-item" style="text-align: left; font-size: 13px;">
