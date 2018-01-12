@@ -265,7 +265,10 @@ electron.ipcMain.on('sendCaptcha', function(event, token) {
 setInterval(function(){
   for (var i = 0; i < captchaBank.length; i++) {
 
-    win.webContents.send('updateHistory', { time: 110 - moment().diff(moment(captchaBank[i].timestamp), 'seconds'), token: captchaBank[i].token });
+    win.webContents.send('updateHistory', {
+      time: 110 - moment().diff(moment(captchaBank[i].timestamp), 'seconds'),
+      token: captchaBank[i].token
+    });
 
     if (moment().diff(moment(captchaBank[i].timestamp), 'seconds') > 110) {
       console.log('Removing Captcha Token')
@@ -387,4 +390,12 @@ function initCapWindow() {
     })
 
     return capWin.show()
+
 }
+
+electron.ipcMain.on('saveSettings', function(event) {
+    global.host = eSettings.getSync('host')
+    global.sitekey = eSettings.getSync('sitekey')
+    global.port = eSettings.getSync('port')
+    global.server_port = eSettings.getSync('server_port')
+})

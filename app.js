@@ -39,6 +39,7 @@ $('#portNoServer').change(function() {
 $('#saveSettings').click(() => {
     remote.getCurrentWindow().reload();
     ipcRenderer.send('restartServer');
+    ipcRenderer.send('saveSettings');
 });
 
 $('#openCapWindow').click(() => {

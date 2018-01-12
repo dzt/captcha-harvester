@@ -11,7 +11,7 @@
   <body>
   <center>
   <form action="/submit" method="post" style="margin-top: 180px;">
-      <div class="g-recaptcha" data-sitekey="6LeoeSkTAAAAAA9rkZs5oS82l69OEYjKRZAiKdaF" data-callback="sub"></div>
+      <div id="captchaFrame"></div>
       <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
   </form>
 </center>
@@ -30,7 +30,11 @@
   const app = remote.app
   const ipcRenderer = require('electron').ipcRenderer
 
-  function sub(){
+  // TODO: Wait for main process to send captcha sitekey over to render
+
+  $('#captchaFrame').html(`<div class="g-recaptcha" data-sitekey="${remote.getGlobal('sitekey')}" data-callback="sub"></div>`);
+
+  function sub() {
     ipcRenderer.send('sendCaptcha', $('#g-recaptcha-response').val());
     grecaptcha.reset();
   }
