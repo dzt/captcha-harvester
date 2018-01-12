@@ -16,7 +16,7 @@ const _ = require('underscore')
 
 var expressApp, bankExpressApp, bankServer;
 
-var win, settingsWin, capWin;
+var win, settingsWin, capWin, loginWindow;
 
 const debug = /--debug/.test(process.argv[2])
 
@@ -299,15 +299,24 @@ electron.ipcMain.on('restartServer', (event, args) => {
 
 electron.ipcMain.on('login', (event, args) => {
 
-  const loginWindow = new BrowserWindow({
-    width: 600,
-    height: 600,
-    minWidth: 600,
-    minHeight: 600
-  });
+  if (loginWindow == null) {
+    loginWindow = new BrowserWindow({
+      width: 600,
+      height: 600,
+      minWidth: 600,
+      minHeight: 600
+    });
 
-  loginWindow.setMenu(null);
-  loginWindow.loadURL('https://accounts.google.com/signin/v2/identifier?hl=en&service=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Ffeature%3Dsign_in_button%26hl%3Den%26app%3Ddesktop%26next%3D%252F%26action_handle_signin%3Dtrue&passive=true&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin');
+    loginWindow.setMenu(null);
+    loginWindow.loadURL('https://accounts.google.com/signin/v2/identifier?hl=en&service=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Ffeature%3Dsign_in_button%26hl%3Den%26app%3Ddesktop%26next%3D%252F%26action_handle_signin%3Dtrue&passive=true&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin');
+
+    loginWindow.once('closed', function() {
+        loginWindow = null
+    })
+  } else {
+    console.log('openLoginError')
+    win.webContents.send('openLoginError');
+  }
 
 })
 

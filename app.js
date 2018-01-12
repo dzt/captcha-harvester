@@ -79,6 +79,18 @@ ipcRenderer.on('openWindowError', function(event, data) {
 
 });
 
+ipcRenderer.on('openLoginError', function(event, data) {
+
+    $("#login").prop("disabled", true);
+    $("#login").text('Login Window is already open.');
+
+    setTimeout(function() {
+      $("#login").text('Authenticate Account');
+      $("#login").prop("disabled", false);
+    }, 2000);
+
+});
+
 ipcRenderer.on('addHistory', function(event, data) {
   $('#history').prepend(`
     <li class="list-group-item" style="text-align: left; font-size: 13px;">
