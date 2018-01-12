@@ -67,6 +67,18 @@ $('#logout').click(() => {
 
 });
 
+ipcRenderer.on('openWindowError', function(event, data) {
+
+    $("#openCapWindow").prop("disabled", true);
+    $("#openCapWindow").text('Captcha Window is already open.');
+
+    setTimeout(function() {
+      $("#openCapWindow").text('Open Captcha Window');
+      $("#openCapWindow").prop("disabled", false);
+    }, 2000);
+
+});
+
 ipcRenderer.on('addHistory', function(event, data) {
   $('#history').append(`
     <li class="list-group-item" style="text-align: left; font-size: 13px;">
