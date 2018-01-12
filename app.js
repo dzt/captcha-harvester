@@ -80,9 +80,9 @@ ipcRenderer.on('openWindowError', function(event, data) {
 });
 
 ipcRenderer.on('addHistory', function(event, data) {
-  $('#history').append(`
+  $('#history').prepend(`
     <li class="list-group-item" style="text-align: left; font-size: 13px;">
-    ${data.host}
+    #${ ($('.list-group-item').length + 1) } - ${data.host}
     <span class="badge" style="background-color: #f9ce56;" id="${data.token}">Expires in 110 seconds</span>
     </li>`);
 });
